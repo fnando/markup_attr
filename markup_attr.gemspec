@@ -1,6 +1,4 @@
-# -*- encoding: utf-8 -*-
-$:.push File.expand_path("../lib", __FILE__)
-require "markup_attr/version"
+require "./lib/markup_attr/version"
 
 Gem::Specification.new do |s|
   s.name        = "markup_attr"
@@ -17,15 +15,15 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_dependency "activerecord", "~> 3.0"
-  s.add_dependency "actionpack", "~> 3.0"
+  s.add_dependency "activerecord"
+  s.add_dependency "actionpack"
 
-  s.add_development_dependency "nokogiri", "~> 1.5"
-  s.add_development_dependency "redcarpet"    , "~> 1.17"
-  s.add_development_dependency "RedCloth"     , "~> 4.2"
+  s.add_development_dependency "nokogiri"
+  s.add_development_dependency "redcarpet"
+  s.add_development_dependency "RedCloth"
   s.add_development_dependency "rake"
-  s.add_development_dependency "rspec"        , "~> 2.6"
-  s.add_development_dependency "sqlite3"      , "~> 1.3"
-  s.add_development_dependency "swiss_knife"  , "~> 1.0"
-  s.add_development_dependency "ruby-debug19"
+  s.add_development_dependency "rspec"
+  s.add_development_dependency "sqlite3"
+  s.add_development_dependency "pry-meta"
+  s.add_development_dependency "rails"
 end

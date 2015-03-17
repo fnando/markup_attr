@@ -38,7 +38,7 @@ module MarkupAttr
         format = options.delete(:format)
 
         text = __send__(attr_name).to_s
-        text = MarkupAttr::Markup.new(format, text).to_html unless format == :html
+        text = MarkupAttr::Markup.render(format, text) unless format == :html
         text = MarkupAttr::Sanitize.html(text, options) if options[:sanitize]
         write_attribute("formatted_#{attr_name}", text)
       end

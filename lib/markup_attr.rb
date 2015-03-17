@@ -3,10 +3,11 @@ require "active_record"
 require "action_view"
 
 module MarkupAttr
-  autoload :Markup, "markup_attr/markup"
-  autoload :Sanitize, "markup_attr/sanitize"
-  autoload :Version, "markup_attr/version"
-
+  require "markup_attr/markdown"
+  require "markup_attr/textile"
+  require "markup_attr/markup"
+  require "markup_attr/sanitize"
+  require "markup_attr/version"
   require "markup_attr/active_record"
 end
 

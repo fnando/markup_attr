@@ -1,28 +1,16 @@
 module MarkupAttr
   class Markup
-    attr_accessor :markup
-
     class << self
       attr_accessor :markdown_processor
+      attr_accessor :textile_processor
     end
 
-    def initialize(format, text)
-      case format
-      when :markdown
-        @markup = (self.class.markdown_processor || default_markdown_processor).new(text)
-      when :textile
-        @markup = RedCloth.new(text)
-      else
-        raise ArgumentError, "expected format to be :textile or :markdown; received #{format.inspect}"
-      end
-    end
+    self.markdown_processor = Markdown
+    self.textile_processor = Textile
 
-    def default_markdown_processor
-      Redcarpet
-    end
-
-    def to_html
-      @markup.to_html
+    def self.render(format, text)
+      engine = public_send("#{format}_processor")
+      engine.render(text)
     end
   end
 end
